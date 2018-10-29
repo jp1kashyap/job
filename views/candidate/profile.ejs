@@ -1,0 +1,324 @@
+<%- include('../header') -%>
+<section class="overlape">
+	<div class="block no-padding">
+		<div data-velocity="-.1" style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+		<div class="container fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="inner-header">
+						<h3>Welcome <%= req.session.username %></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+		<div class="block no-padding">
+			<div class="container">
+				 <div class="row no-gape">
+				 	<%- include('asside') -%>
+				 	<div class="col-lg-9 column">
+				 		<div class="padding-left">
+					 		<div class="profile-title">
+					 			<h3>My Profile</h3>
+					 			<div class="upload-img-bar">
+					 				<span class="round"><img src="http://placehold.it/140x140" alt="" /></span>
+					 				<div class="upload-info">
+					 					<a href="#" title="">Browse</a>
+					 					<span>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg & .png</span>
+					 				</div>
+					 			</div>
+					 		</div>
+					 		<div class="profile-form-edit">
+					 			<form id="profile_candidate"  action="/users/candidate/profile" method="post">
+					 				<div class="row">
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Full Name</span>
+					 						<div class="pf-field">
+					 							<input type="text" name="full_name" value="<%= profile.full_name %>" placeholder="Type your full name" />
+					 						</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Job Title</span>
+					 						<div class="pf-field">
+					 							<input type="text" name="job_title" value="<%= profile.job_title %>" placeholder="Enter your job title" />
+					 						</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Job Type</span>
+					 						<div class="pf-field">
+					 							<select name="job_type" data-placeholder="Please Select Specialism" class="chosen">
+													<option <%= profile.job_type=='Web Development'?'selected':'' %>>Web Development</option>
+													<option <%= profile.job_type=='Web Designing'?'selected':'' %>>Web Designing</option>
+													<option <%= profile.job_type=='Art & Culture'?'selected':'' %>>Art & Culture</option>
+													<option <%= profile.job_type=='Reading & Writing'?'selected':'' %>>Reading & Writing</option>
+												</select>
+					 						</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Current Salary</span>
+					 						<div class="range_slider">
+												<div class="nstSlider" data-range_min="6000" data-range_max="150000"  data-cur_min="<%=profile.current_min_salary?profile.current_min_salary:'8000'%>"    data-cur_max="<%=profile.current_max_salary?profile.current_max_salary:'100000'%>">
+													<div class="bar"></div>
+													<div class="leftGrip"></div>
+													<div class="rightGrip"></div>
+													<input type="hidden" class="hiddenleft" name="current_min_salary" value=""/>
+													<input type="hidden" class="hiddenright" name="current_max_salary" value=""/>
+												</div>
+												<div class="leftLabel" id="current_min_salary"></div>
+												<div class="rightLabel" id="current_max_salary"></div>
+											</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Experience</span>
+					 						<div class="pf-field">
+					 							<select name="experience" data-placeholder="Experiecne" class="chosen">
+													<option <%= profile.experience=='2-6 Years'?'selected':'' %>>2-6 Years</option>
+													<option <%= profile.experience=='6-12 Years'?'selected':'' %>>6-12 Years</option>
+												</select>
+					 						</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Age</span>
+					 						<div class="pf-field">
+					 							<select name="age" data-placeholder="Age" class="chosen">
+													<option <%= profile.age=='22-30 Years'?'selected':'' %>>22-30 Years</option>
+													<option <%= profile.age=='30-40 Years'?'selected':'' %>>30-40 Years</option>
+													<option <%= profile.age=='40-50 Years'?'selected':'' %>>40-50 Years</option>
+												</select>
+					 						</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Expected Salary</span>
+					 						<div class="range_slider">
+												<div class="nstSlider" data-range_min="6000" data-range_max="150000"  data-cur_min="<%=profile.expected_min_salary?profile.expected_min_salary:'8000'%>"    data-cur_max="<%=profile.expected_max_salary?profile.expected_max_salary:'100000'%>">
+													<div class="bar"></div>
+													<div class="leftGrip"></div>
+													<div class="rightGrip"></div>
+													<input type="hidden" class="hiddenleft" name="expected_min_salary" value=""/>
+													<input type="hidden" class="hiddenright" name="expected_max_salary" value=""/>
+												</div>
+												<div class="leftLabel" id="expected_min_salary"></div>
+												<div class="rightLabel" id="expected_max_salary"></div>
+											</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Education Levels</span>
+					 						<div class="pf-field">
+					 							<select name="education_level" data-placeholder="Please Select Education Level" class="chosen">
+													<option <%= profile.education_level=='Diploma'?'selected':''%>>Diploma</option>
+													<option <%= profile.education_level=='Inter'?'selected':''%>>Inter</option>
+													<option <%= profile.education_level=='Bachelor'?'selected':''%>>Bachelor</option>
+													<option <%= profile.education_level=='Graduate'?'selected':''%>>Graduate</option>
+												</select>
+					 						</div>
+					 					</div>
+					 					<div class="col-lg-6">
+					 						<span class="pf-title">Languages</span>					 						
+					 						<div class="pf-field">
+						 						<div class="pf-field">
+						 							<select name="languages" data-placeholder="Please Select Language" class="chosen">
+														<option <%= profile.languages=='English'?'selected':''%> >English</option>
+														<option <%= profile.languages=='Hindi'?'selected':''%>>Hindi</option>
+													</select>
+						 						</div>
+											</div>
+					 					</div>
+					 					<div class="col-lg-12">
+					 						<span class="pf-title">Categories</span>					 						
+					 						<div class="pf-field no-margin">
+						 						<ul class="tags">
+										           <li class="addedTag">Photoshop<span onclick="$(this).parent().remove();" class="tagRemove">x</span><input type="hidden" name="tags[]" value="Photoshop"></li>
+										           <li class="addedTag">Digital & Creative<span onclick="$(this).parent().remove();" class="tagRemove">x</span><input type="hidden" name="tags[]" value="Digital"></li>
+										           <li class="addedTag">Agency<span onclick="$(this).parent().remove();" class="tagRemove">x</span><input type="hidden" name="tags[]" value="Agency"></li>
+							            			<li class="tagAdd taglist">  
+							              				 <input type="text" id="search-field">
+										            </li>
+												</ul>
+											</div>
+					 					</div>
+					 					<div class="col-lg-12">
+					 						<span class="pf-title">Description</span>
+					 						<div class="pf-field">
+					 							<textarea name="description" placeholder="Enter Description About you"><%= profile.description %></textarea>
+					 						</div> 
+					 					</div>
+					 				</div>
+					 			<h3>Social Edit</h3>
+								<div class="row">
+									<div class="col-lg-6">
+										<span class="pf-title">Facebook</span>
+										<div class="pf-field">
+											<input type="text" name="facebook" placeholder="Enter your facebook page url" value="<%= profile.facebook %>" />
+											<i class="fa fa-facebook"></i>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<span class="pf-title">Twitter</span>
+										<div class="pf-field">
+											<input type="text" name="twitter" placeholder="Enter your twitter page url" value="<%= profile.twitter %>" />
+											<i class="fa fa-twitter"></i>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<span class="pf-title">Google</span>
+										<div class="pf-field">
+											<input type="text" name="google" placeholder="Enter your google plus page url" value="<%= profile.google %>" />
+											<i class="la la-google"></i>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<span class="pf-title">Linkedin</span>
+										<div class="pf-field">
+											<input type="text" name="linkedin" placeholder="Enter your linkedin page url" value="<%= profile.linkedin %>"/>
+											<i class="la la-linkedin"></i>
+										</div>
+									</div>
+								</div>
+					 			<h3>Contact</h3>
+										<div class="row">
+											<div class="col-lg-4">
+												<span class="pf-title">Phone Number</span>
+												<div class="pf-field">
+													<input type="text" name="phone" placeholder="+90 538 963 58 96" value="<%= profile.phone %>" />
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<span class="pf-title">Email</span>
+												<div class="pf-field">
+													<input type="text" placeholder="demo@jobhunt.com" value="<%= profile.email %>" />
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<span class="pf-title">Website</span>
+												<div class="pf-field">
+													<input type="text" placeholder="Please use http:// or https://" value="<%= profile.website %>" />
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<span class="pf-title">Country</span>
+												<div class="pf-field">
+													<input type="text" id="country" placeholder="Enter your country" name="country" value="<%= profile.country %>"/>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<span class="pf-title">City</span>
+												<div class="pf-field">
+													<input type="text" id="locality" placeholder="Enter your city" name="city" value="<%= profile.city %>"/>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<span class="pf-title">Find On Map</span>
+												<div class="pf-field">
+													<input type="text" id="autocomplete" name="address" placeholder="PLease search your location" value="<%= profile.address %>" />
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<span class="pf-title">Latitude</span>
+												<div class="pf-field">
+													<input type="text" id="lat" name="latitude" placeholder="PLease search your location" value="<%= profile.latitude %>" />
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<span class="pf-title">Longitude</span>
+												<div class="pf-field">
+													<input type="text" id="long" name="longitude" value="<%= profile.longitude %>" placeholder="PLease search your location" />
+												</div>
+											</div>
+											<div class="col-lg-12">
+												<a href="#" title="" class="srch-lctn">Search Location</a>
+											</div>
+											<div class="col-lg-12">
+												<span class="pf-title">Maps</span>
+												<div class="pf-map">
+													<div id="map_div"></div>
+												</div>
+											</div>
+											<div class="col-lg-12 form-group">
+												<button type="submit" onclick="submit_form('profile_candidate')" >Update</button>
+											</div><br/><br/>
+										</div>
+								</form>
+					 		</div>
+					 	</div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</section>
+
+<script>
+var placeSearch, autocomplete;
+var componentForm = {
+	//street_number: 'short_name',
+	//route: 'long_name',
+	locality: 'long_name',
+	//administrative_area_level_1: 'long_name',
+	country: 'long_name',
+	//postal_code: 'long_name'
+};
+
+function initAutocomplete() {
+	autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
+	autocomplete.addListener('place_changed', fillInAddress);
+}
+
+function fillInAddress() {
+	var place = autocomplete.getPlace();
+	for (var component in componentForm) {
+		document.getElementById(component).value = '';
+		document.getElementById(component).disabled = false;
+	}
+	
+	for (var i = 0; i < place.address_components.length; i++) {
+		var addressType = place.address_components[i].types[0];
+		if (componentForm[addressType]) {
+			var val = place.address_components[i][componentForm[addressType]];
+			document.getElementById(addressType).value = val;
+		}
+	}
+	var lat=place.geometry.location.lat();
+	var lng=place.geometry.location.lng();
+	document.getElementById('lat').value=lat;
+	document.getElementById('long').value=lng;
+	
+	var latlng = new google.maps.LatLng(lat,lng);
+	  
+	// Creating an object literal containing the properties we want to pass to the map  
+	var options = {  
+		zoom: 15, // This number can be set to define the initial zoom level of the map
+		center: latlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP // This value can be set to define the map type ROADMAP/SATELLITE/HYBRID/TERRAIN
+	};  
+	// Calling the constructor, thereby initializing the map  
+	var map = new google.maps.Map(document.getElementById('map_div'), options);  
+	
+	// Define Marker properties
+	var image = new google.maps.MarkerImage('/images/marker1.png',
+		new google.maps.Size(100, 100),
+		new google.maps.Point(0,0),
+		new google.maps.Point(18, 42)
+	);
+	
+	// Add Marker
+	var marker1 = new google.maps.Marker({
+		position: new google.maps.LatLng(lat,lng), 
+		map: map,		
+		icon: image // This path is the custom pin to be shown. Remove this line and the proceeding comma to use default pin
+	});	
+	
+	
+}
+function submit_form(id){
+	document.getElementById(id).submit();
+}
+$(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});
+</script> 
+
+<%- include('../footer') -%>
